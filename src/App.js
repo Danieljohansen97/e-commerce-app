@@ -20,7 +20,7 @@ const App = () => {
         },
         {
             "id": 4,
-            "title": "womens",
+            "title": "women's",
             "imageUrl": "https://i.ibb.co/GCCdy8t/womens.png"
         },
         {
