@@ -27,3 +27,13 @@
     margin-top: auto;
   }
 }
+
+::-webkit-scrollbar {
+  background: white;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 5px;
+}
