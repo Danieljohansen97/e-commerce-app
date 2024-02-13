@@ -5,7 +5,8 @@ import Button from "../button/button.component";
 
 import {createAuthUserWithEmailAndPassword, createUserDocumentFromAuth} from "../../utils/firebase/firebase.utils";
 
-import "./sign-up-form.styles.scss"
+import "./sign-up-form.styles.scss";
+
 const defaultFormFields = {
     displayName: "",
     email: "",
@@ -33,10 +34,15 @@ const SignUpForm = () => {
             await createUserDocumentFromAuth(user, {displayName});
             resetFormFields()
         } catch (error) {
-            if (error.code === "auth/email-already-in-use") {
-                alert("Cannot create user, email already in use")
-            } else {
-                console.log("User creation encountered an error", error)
+            switch (error.code) {
+                case "auth/email-already-in-use":
+                    console.log("Email already in use", error)
+                    break;
+                case "auth/weak-password":
+                    console.log("Weak password, should be at least 6 characters", error)
+                    break;
+                default:
+                    console.log("User creation encountered an error", error)
             }
         }
     }
